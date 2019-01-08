@@ -1,0 +1,14 @@
+{% if salary_list %}
+    <ul>
+        <table style="width:100%">
+        {% for salary in salary_list %}
+            <tr>
+                <th>{{ salary.workedYears }}</th>
+                <th>{{ salary.salaryBrutto }}</th>
+            </tr>
+        {% endfor %}
+        </table>
+    </ul>
+{% else %}
+    <p>No data is available.</p>
+{% endif %}
