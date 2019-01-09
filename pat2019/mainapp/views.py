@@ -1,11 +1,10 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-
-
 from django.http import HttpResponse
 from django.template import loader
 
 from .models import Salary
+from .machinelearning.linearregression import *
+from .db.databasemanager import *
+
 
 def index(request):
     template = loader.get_template('mainapp/index.html')
@@ -22,9 +21,10 @@ def raw_data(request):
 
 
 def predicted_data(request):
-    salary_list = Salary.objects.all()
-    template = loader.get_template('mainapp/data_table.html')
+    predicted_salary = calculate_predicted_salary(Salary.objects.all())
+    update_salary_predicted(predicted_salary)
+    template = loader.get_template('mainapp/data_table_predicted.html')
     context = {
-        'salary_list': salary_list,
+        'salary_list': SalaryPredicted.objects.all(),
     }
     return HttpResponse(template.render(context, request))

@@ -8,11 +8,13 @@
             <tr>
                 <th>Worked years</th>
                 <th>Salary Brutto</th>
+                <th>Salary Brutto Predicted</th>
             </tr>
         {% for salary in salary_list %}
             <tr>
                 <td>{{ salary.workedYears }}</td>
                 <td>{{ salary.salaryBrutto }}</td>
+                <td>{{ salary.salaryBruttoPredicted }}</td>
             </tr>
         {% endfor %}
         </table>

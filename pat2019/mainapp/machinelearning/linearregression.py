@@ -23,10 +23,10 @@ def predict_salary(model, salary_test):
     return salary_test
 
 
-def save_results_to_db(salary_train, salary_test):
+def result(salary_train, salary_test):
     salary_out = salary_train.append(salary_test)
     salary_out = salary_out[['id', 'workedYears', 'salaryBrutto', 'salaryBruttoPredicted']]
-    # TODO insert to db
+    return salary_out
 
 
 def calculate_predicted_salary(data):
@@ -34,7 +34,7 @@ def calculate_predicted_salary(data):
     salary_train, salary_test = prepare_data(salary)
     model = train_model(salary_train)
     salary_test = predict_salary(model, salary_test)
-    save_results_to_db(salary_train, salary_test)
+    return result(salary_train, salary_test)
 
 
 
