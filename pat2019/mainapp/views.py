@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
 
+from .charts.chart import ScatterChart, PieChart
 from .models import Salary
 from .machinelearning.linearregression import *
 from .db.databasemanager import *
@@ -26,5 +27,14 @@ def predicted_data(request):
     template = loader.get_template('mainapp/data_table_predicted.html')
     context = {
         'salary_list': SalaryPredicted.objects.all(),
+    }
+    return HttpResponse(template.render(context, request))
+
+
+def chart(request):
+    template = loader.get_template('mainapp/chart.html')
+    context = {
+        'chart': ScatterChart(),
+        'pie_chart': PieChart()
     }
     return HttpResponse(template.render(context, request))
