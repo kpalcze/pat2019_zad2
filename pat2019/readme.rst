@@ -17,4 +17,4 @@ Default address of the application after running server:
 
    `http://127.0.0.1:8000/mainapp/`_
 
-.. _`http://127.0.0.1:8000/mainapp/`: http://127.0.0.1:8000/mainapp/n
+.. _`http://127.0.0.1:8000/mainapp/`: http://127.0.0.1:8000/mainapp/
